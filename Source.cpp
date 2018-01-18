@@ -14,7 +14,7 @@ private:
 	int _swapattempts = 0;
 public:
 	T getValue(int valueindex);
-	int numberofvalues(void); {return values.size(); }
+	int numberofvalues(void) {return values.size(); }
 	void addValue(T value);
 	void displayValues(void);
 	void sortValues(void);
@@ -59,7 +59,6 @@ public:
 	string word;
 	vector<int>indexes;
 };
-
 class AnagramFinder
 {
 private:
@@ -82,6 +81,7 @@ public:
 	int swapoperations = 0;
 	//stored seperately because it is a factor of n and m (where m is average word length)
 };
+
 void AnagramFinder::addword(string word)
 {
 	for (int x = 0; x < int(words.size()); x++)
@@ -137,7 +137,6 @@ void AnagramFinder::addSortedWord(string sortedword, int wordindex)
 
 	sortedwords.push_back(NewWord);
 }
-template <typename T>
 string AnagramFinder::sortWord(string word)
 {
 	TemplateBubbleSort<char> LetterSort; //bubblesort
@@ -145,7 +144,7 @@ string AnagramFinder::sortWord(string word)
 
 	for (int lettercount = 0; lettercount < word.size(); lettercount++)
 	{
-		if (word[lettercount] != " ") LetterSort.addValue(word[lettercount]);
+		if (word[lettercount] != ' ') LetterSort.addValue(word[lettercount]);
 	}
 	LetterSort.sortValues(); // run sort method of TemplateBubbleSort with the values provided
 
@@ -160,7 +159,18 @@ string AnagramFinder::sortWord(string word)
 
 int main(void)
 {
-	
-
+	AnagramFinder Finder1;
+	Finder1.addword("keen");
+	Finder1.addword("deer");
+	Finder1.addword("knee");
+	Finder1.addword("reed");
+	Finder1.addword("reel");
+	Finder1.addword("computer");
+	cout << "Display Words" << endl;
+	Finder1.displayWords();
+	cout << "Display Anagrams" << endl;
+	Finder1.displayAnagrams();
+	cout << "Number of words" << endl;
+	Finder1.numberOfWords();
 	return 0;
 }
